@@ -99,7 +99,7 @@ function countCharacters(text: string): number {
   return total;
 }
 
-function findBannedWord(text: string): string {
+function findFirstBannedWord(text: string): string {
   const lowered = text.toLowerCase();
   let found = "";
   for (const banned of BANNED_WORDS) {
@@ -146,7 +146,7 @@ function validateMonologue(text: string): GateVerdict {
   const wordCount = countWords(text);
   const charCount = countCharacters(text);
   const byteCount = Buffer.byteLength(text, "utf8");
-  const bannedWord = findBannedWord(text);
+  const bannedWord = findFirstBannedWord(text);
   const singleParagraph = hasSingleParagraph(text);
   const utf8Intact = survivesUtf8RoundTrip(text);
   const reasons: string[] = [];
